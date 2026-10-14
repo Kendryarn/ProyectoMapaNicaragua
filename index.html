@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nicaragua: departamentos y sitios históricos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Título de la página -->
+  <header class="encabezado">
+    <h1>Nicaragua</h1>
+    <p>Departamentos y sitios históricos</p>
+  </header>
+  <div id="franja"></div> <!-- franja con los colores de los departamentos -->
+
+  <main class="contenido">
+    <!-- Mapa -->
+    <div id="stage">
+      <svg id="svg" role="img" aria-label="Mapa político de Nicaragua">
+        <g id="map"></g>   <!-- mapa completo -->
+        <g id="lift"></g>  <!-- departamento agrandado -->
+      </svg>
+      <button id="fab" aria-label="Volver al mapa de Nicaragua"></button>
+      <div id="tip"></div>
+    </div>
+
+    <!-- Panel con la lista de departamentos y la información de cada sitio -->
+    <aside id="panel" aria-live="polite"></aside>
+  </main>
+
+  <!-- El orden importa: primero los datos, al final la lógica -->
+  <script src="datos-mapa.js"></script>
+  <script src="sitios.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
