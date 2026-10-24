@@ -62,6 +62,20 @@ function coordenadasAXY(lat, lon) {
 
 const escaparHTML = (texto) => String(texto).replace(/</g, "&lt;");
 
+// En pantallas chicas (celular, o el mapa incrustado en Google Sites) el dibujo se
+// reduce: 1100 unidades caben en ~300 px y los textos y bordes quedarían minúsculos.
+// Este factor los agranda SOLO en pantallas chicas; en computadora vale 1 (no cambia nada).
+function factorPantalla() {
+  if (!matchMedia("(max-width: 800px)").matches) return 1;
+  const pxPorUnidad = Math.min(svg.clientWidth / PROYECCION.ancho, svg.clientHeight / PROYECCION.alto);
+  return pxPorUnidad > 0 ? 0.87 / pxPorUnidad : 1;
+}
+
+// Grosor del borde blanco de los departamentos (lo lee styles.css)
+function actualizarBorde() {
+  svg.style.setProperty("--borde", String(1.5 * factorPantalla()));
+}
+
 /* =====================================================================
    CÁMARA (zoom y desplazamiento del mapa)
    ===================================================================== */
@@ -134,8 +148,8 @@ function rotularLagosDelMapa() {
   const grupo = crearSVG("g", { id: "lakeLabels" }, mapa);
   LAGOS.filter((lago) => lago.rotulo === "mapa").forEach((lago) => {
     const etiqueta = crearSVG("text", {
-      x: lago.etiquetaX, y: lago.etiquetaY, "font-size": 13,
-      "stroke-width": 3, class: "lk", "text-anchor": "middle",
+      x: lago.etiquetaX, y: lago.etiquetaY, "font-size": 13 * factorPantalla(),
+      "stroke-width": 3 * factorPantalla(), class: "lk", "text-anchor": "middle",
     }, grupo);
     etiqueta.textContent = lago.nombre;
   });
@@ -216,7 +230,7 @@ function abrirDepartamento(codigo) {
   const color = DEPARTAMENTOS[codigo].color;
   crearSVG("path", {
     d: FORMAS_DEPARTAMENTOS[codigo], class: "sombra",
-    transform: `translate(${5 / escala} ${10 / escala})`,
+    transform: `translate(${5 * factorPantalla() / escala} ${10 * factorPantalla() / escala})`,
   }, capaElevada);
   LAGOS.forEach((lago) => {
     const parte = lago.partes[codigo];
@@ -224,7 +238,7 @@ function abrirDepartamento(codigo) {
   });
   const copia = crearSVG("path", {
     d: FORMAS_DEPARTAMENTOS[codigo], fill: color, class: "dep",
-    style: `stroke-width:${2.5 / escala}`,
+    style: `stroke-width:${2.5 * factorPantalla() / escala}`,
   }, capaElevada);
   copia.onclick = () => moverVista(VISTA_COMPLETA); // clic: ver el departamento completo
   if (RELLENOS[codigo]) crearSVG("path", { d: RELLENOS[codigo], fill: color, class: "relleno" }, capaElevada);
@@ -256,6 +270,7 @@ function abrirDepartamento(codigo) {
 
 // Nombres de los lagos dentro del departamento ampliado
 function rotularLagosDelDepartamento(codigo, escala) {
+  escala = escala / factorPantalla(); // agranda los textos en pantallas chicas
   LAGOS.forEach((lago) => {
     const parte = lago.partes[codigo];
     if (!parte || lago.rotulo === "no") return;
@@ -326,6 +341,7 @@ function ubicarBurbuja(x, y, ancho, alto, ocupados, radio) {
 async function dibujarMarcadores(codigo, escala) {
   await document.fonts.ready; // para medir bien el texto con la tipografía final
   if (departamentoAbierto !== codigo) return;
+  escala = escala / factorPantalla(); // en pantallas chicas todo se dibuja más grande
 
   // Todo se divide entre "escala" para que los textos y puntos mantengan
   // su tamaño en pantalla aunque el departamento esté agrandado.
@@ -577,6 +593,8 @@ document.addEventListener("keydown", (e) => {
 });
 
 pintarFranja();
+actualizarBorde();
+window.addEventListener("resize", actualizarBorde);
 fijarVista(VISTA_COMPLETA);
 dibujarLagos();            // primero el agua (queda debajo)
 dibujarDepartamentos();    // después la tierra, con huecos donde hay agua
