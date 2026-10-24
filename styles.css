@@ -138,6 +138,15 @@ body {
 }
 .pin.on .ring { animation: pulso 1.6s ease-out infinite; }
 
+/* Línea y puntito que marcan la ubicación real cuando el marcador se corre (celular) */
+.pin .ancla { stroke: var(--tinta); }
+.pin .ancla-punto { fill: var(--tinta); }
+
+/* Pantallas táctiles: el efecto "hover" se queda pegado después de tocar */
+@media (hover: none) {
+  .pin:hover .dot, .pin:focus-visible .dot { transform: none; }
+}
+
 /* Número dentro del punto: solo en celular */
 .pin .num { display: none; }
 
@@ -310,7 +319,9 @@ li button:focus-visible, .sites button:focus-visible { outline: 2px solid var(--
   #panel { flex: none; width: 100%; overflow: visible; }
 
   /* En celular los sitios se marcan con números; el nombre aparece solo en el elegido */
-  .pin:not(.on) .caja, .pin:not(.on) .guia, .pin:not(.on) text:not(.num) { display: none; }
+  /* visibility (no display): así el texto se puede medir y la burbuja sale del tamaño correcto */
+  .pin:not(.on) .caja, .pin:not(.on) .guia, .pin:not(.on) text:not(.num) { visibility: hidden; }
+  .pin.on .ring { animation: none; }   /* sin aro que pulsa: estorba en pantalla chica */
   .pin .num { display: block; fill: var(--tinta); font-weight: 700; }
   .pin.on .num { fill: var(--tinta); }
   .sites { counter-reset: sitio; }
@@ -326,6 +337,7 @@ li button:focus-visible, .sites button:focus-visible { outline: 2px solid var(--
     justify-content: center;
     box-sizing: border-box;
     font-size: 15px;
+    line-height: 1;
     border: 0;
     border-bottom: 1px solid var(--linea);
     border-radius: 0;

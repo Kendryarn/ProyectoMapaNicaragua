@@ -272,6 +272,7 @@ function abrirDepartamento(codigo) {
 // Nombres de los lagos dentro del departamento ampliado
 function rotularLagosDelDepartamento(codigo, escala) {
   escala = escala / factorPantalla(); // agranda los textos en pantallas chicas
+  const lim = limitesVisibles();
   LAGOS.forEach((lago) => {
     const parte = lago.partes[codigo];
     if (!parte || lago.rotulo === "no") return;
@@ -281,6 +282,8 @@ function rotularLagosDelDepartamento(codigo, escala) {
       "stroke-width": 3 / escala, class: "lk", "text-anchor": "middle",
     }, capaElevada);
     etiqueta.textContent = lago.nombre;
+    const b = etiqueta.getBBox(); // si el nombre se saldría del recuadro, no se muestra cortado
+    if (b.x < lim.x1 || b.y < lim.y1 || b.x + b.width > lim.x2 || b.y + b.height > lim.y2) etiqueta.remove();
   });
 }
 
@@ -345,13 +348,44 @@ function ubicarBurbuja(x, y, ancho, alto, ocupados, radio, limites) {
   return rectangulo(x + radio * 2, y - alto / 2, x + radio * 2 + ancho, y + alto / 2);
 }
 
+// Zona visible del recuadro, en las coordenadas del departamento ampliado
+function limitesVisibles(margenPx = 4) {
+  const { escala, tx, ty } = transformacion, m = margenPx / escala;
+  return rectangulo((0 - tx) / escala + m, (0 - ty) / escala + m,
+                    (PROYECCION.ancho - tx) / escala - m, (PROYECCION.alto - ty) / escala - m);
+}
+
+// Separa puntos que quedaron encimados (varios sitios en la misma ciudad) para que
+// cada número se vea y se pueda tocar. Los puntos se empujan entre sí y se
+// mantienen dentro del recuadro visible.
+function separarPuntos(puntos, distanciaMinima, limites, margen) {
+  const p = puntos.map(([x, y]) => [x, y]);
+  for (let vuelta = 0; vuelta < 120; vuelta++) {
+    let movido = false;
+    for (let i = 0; i < p.length; i++) {
+      for (let j = i + 1; j < p.length; j++) {
+        let dx = p[j][0] - p[i][0], dy = p[j][1] - p[i][1], d = Math.hypot(dx, dy);
+        if (d >= distanciaMinima) continue;
+        if (d < 1e-6) { const ang = (i + 1) * 2.39996 + j; dx = Math.cos(ang); dy = Math.sin(ang); d = 1; } // justo encima: cada uno sale hacia un lado distinto
+        const empuje = (distanciaMinima - d) / 2;
+        p[i][0] -= (dx / d) * empuje; p[i][1] -= (dy / d) * empuje;
+        p[j][0] += (dx / d) * empuje; p[j][1] += (dy / d) * empuje;
+        movido = true;
+      }
+    }
+    for (const q of p) { // no salirse del recuadro
+      q[0] = Math.min(Math.max(q[0], limites.x1 + margen), limites.x2 - margen);
+      q[1] = Math.min(Math.max(q[1], limites.y1 + margen), limites.y2 - margen);
+    }
+    if (!movido) break;
+  }
+  return p;
+}
+
 async function dibujarMarcadores(codigo, escala) {
   await document.fonts.ready; // para medir bien el texto con la tipografía final
   if (departamentoAbierto !== codigo) return;
-  // Zona visible del recuadro, en las coordenadas del departamento ampliado
-  const t = transformacion, m = 4 / t.escala;
-  const limites = rectangulo((0 - t.tx) / t.escala + m, (0 - t.ty) / t.escala + m,
-                             (PROYECCION.ancho - t.tx) / t.escala - m, (PROYECCION.alto - t.ty) / t.escala - m);
+  const limites = limitesVisibles();
   escala = escala / factorPantalla(); // en pantallas chicas todo se dibuja más grande
   const movil = matchMedia("(max-width: 800px)").matches;
 
@@ -360,14 +394,16 @@ async function dibujarMarcadores(codigo, escala) {
   const sitios = DEPARTAMENTOS[codigo].sitios;
   const radio = (movil ? 12 : 8) / escala; // en celular, punto más grande para tocarlo
   const relleno = 7 / escala;
-  const posiciones = sitios.map((s) => coordenadasAXY(s.lat, s.lon));
+  const posiciones = sitios.map((s) => coordenadasAXY(s.lat, s.lon)); // ubicación real
+  const centros = movil ? separarPuntos(posiciones, radio * 2.4, limites, radio) : posiciones; // donde se dibuja cada marcador
 
   // Zonas ya usadas: primero los puntos de todos los sitios
-  const ocupados = posiciones.map(([x, y]) =>
+  const ocupados = centros.map(([x, y]) =>
     rectangulo(x - radio * 1.6, y - radio * 1.6, x + radio * 1.6, y + radio * 1.6));
 
   marcadores = sitios.map((sitio, i) => {
-    const [x, y] = posiciones[i];
+    const [x, y] = centros[i];
+    const [realX, realY] = posiciones[i];
     const pin = crearSVG("g", {
       class: "pin", tabindex: 0, role: "button",
       "aria-label": sitio.nombre, transform: `translate(${x} ${y})`,
@@ -402,6 +438,12 @@ async function dibujarMarcadores(codigo, escala) {
     }), texto);
     texto.setAttribute("x", izquierda + relleno - medida.x);
     texto.setAttribute("y", arriba + relleno - medida.y);
+
+    // 4b) Si el marcador se corrió de su lugar, una línea y un puntito marcan la ubicación real
+    if (movil && Math.hypot(realX - x, realY - y) > radio * 0.6) {
+      crearSVG("line", { x1: 0, y1: 0, x2: realX - x, y2: realY - y, class: "ancla", "stroke-width": 1.5 / escala }, pin);
+      crearSVG("circle", { cx: realX - x, cy: realY - y, r: radio * 0.28, class: "ancla-punto" }, pin);
+    }
 
     // 5) El punto sobre el mapa, con un aro que pulsa cuando está elegido
     crearSVG("circle", { r: radio, class: "ring", "stroke-width": 2 / escala }, pin);
