@@ -83,7 +83,7 @@ const DEPARTAMENTOS = {
   LE: {
     nombre: "León",
     color: "#f3a712",
-    texto: "info/Leon.txt",
+    texto: "info/Leon/Leon.txt",
     infoFuente: "Billiken, «León, una de las ciudades históricas de Nicaragua más importantes de Centroamérica»",
     sitios: [
       {
