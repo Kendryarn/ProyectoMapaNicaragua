@@ -83,7 +83,7 @@ const DEPARTAMENTOS = {
   LE: {
     nombre: "León",
     color: "#f3a712",
-    info: "Departamento del occidente de Nicaragua. Su cabecera, León, es una de las ciudades más antiguas del país y fue uno de los principales centros de poder durante la época colonial y los primeros años de la república.",
+    texto: "info/Leon.txt",
     infoFuente: "Billiken, «León, una de las ciudades históricas de Nicaragua más importantes de Centroamérica»",
     sitios: [
       {
