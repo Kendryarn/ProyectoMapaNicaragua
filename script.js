@@ -29,6 +29,11 @@ const ICONO_ATRAS = svgIcono("M15 5l-7 7 7 7", 16);
 const ICONO_ANTERIOR = svgIcono("M15 5l-7 7 7 7", 18);
 const ICONO_SIGUIENTE = svgIcono("M9 5l7 7-7 7", 18);
 
+/* Los espacios sin nombre (plantillas por rellenar) no se dibujan ni se cuentan */
+for (const codigo in DEPARTAMENTOS) {
+  DEPARTAMENTOS[codigo].sitios = DEPARTAMENTOS[codigo].sitios.filter((s) => s.nombre && s.nombre.trim());
+}
+
 /* ---------- Estado de la aplicación ---------- */
 let departamentoAbierto = null;  // código del departamento ampliado (ej. "LE")
 let animando = false;            // true mientras corre una animación larga
@@ -36,6 +41,7 @@ let animacionElevar = null;      // animación del departamento que se separa
 let sitioActivo = 0;             // posición del sitio mostrado en el panel
 let transformacion = null;       // { escala, tx, ty } del departamento ampliado
 let marcadores = [];             // un grupo SVG por sitio, en el orden de sitios.js
+let infoMarcadores = [];         // por sitio: dónde quedaron su punto y su burbuja (para encuadrar la cámara)
 let vistaActual = [...VISTA_COMPLETA];
 let idAnimacionVista = 0;
 const elementosDepartamento = {}; // código -> <path> del mapa
@@ -295,6 +301,7 @@ function volverAlMapa() {
 
   marcadores.forEach((pin) => pin.remove());
   marcadores = [];
+  infoMarcadores = [];
   botonVolverFlotante.classList.remove("show");
   moverVista(VISTA_COMPLETA, 500);
 
@@ -322,8 +329,12 @@ const seCruzan = (a, b) => a.x1 < b.x2 && a.x2 > b.x1 && a.y1 < b.y2 && a.y2 > b
 // a otras burbujas ni a otros puntos. Prueba 8 direcciones a distancias crecientes.
 function ubicarBurbuja(x, y, ancho, alto, ocupados, radio, limites) {
   const margen = radio * 0.5;
-  // Primero se busca un lugar DENTRO del recuadro visible; si no hay, se acepta cualquiera
-  for (const dentro of [true, false]) {
+  const acotar = (v, min, max) => Math.max(min, Math.min(v, max)); // si no cabe, pega el valor al borde
+  // 1) lugar completamente DENTRO del recuadro visible; 2) si no hay, el mismo lugar
+  // desplazado hasta que quepa (la línea guía la une a su punto); 3) cualquiera
+  let mejor = null, menorChoque = Infinity; // por si todo choca: el lugar visible que tape menos
+  for (const modo of ["dentro", "ajustada", "libre"]) {
+   if (!limites && modo !== "libre") continue;
    for (const factor of [1.8, 3, 4.5, 6.5, 9, 12]) {
     const d = radio * factor;
     const diag = d * 0.7;
@@ -337,22 +348,45 @@ function ubicarBurbuja(x, y, ancho, alto, ocupados, radio, limites) {
       [x + diag, y + diag],               // abajo a la derecha
       [x - diag - ancho, y + diag],       // abajo a la izquierda
     ];
-    for (const [bx, by] of candidatas) {
-      if (dentro && limites &&
+    for (let [bx, by] of candidatas) {
+      if (modo === "dentro" &&
           (bx < limites.x1 || by < limites.y1 || bx + ancho > limites.x2 || by + alto > limites.y2)) continue;
+      if (modo === "ajustada") {
+        bx = acotar(bx, limites.x1, limites.x2 - ancho);
+        by = acotar(by, limites.y1, limites.y2 - alto);
+      }
       const caja = rectangulo(bx - margen, by - margen, bx + ancho + margen, by + alto + margen);
       if (!ocupados.some((o) => seCruzan(caja, o))) return rectangulo(bx, by, bx + ancho, by + alto);
+      if (modo === "ajustada") {
+        const choque = ocupados.reduce((suma, o) => suma + (seCruzan(caja, o)
+          ? (Math.min(caja.x2, o.x2) - Math.max(caja.x1, o.x1)) * (Math.min(caja.y2, o.y2) - Math.max(caja.y1, o.y1)) : 0), 0);
+        if (choque < menorChoque) { menorChoque = choque; mejor = rectangulo(bx, by, bx + ancho, by + alto); }
+      }
     }
    }
+   if (modo === "ajustada" && mejor) return mejor;
   }
   return rectangulo(x + radio * 2, y - alto / 2, x + radio * 2 + ancho, y + alto / 2);
 }
 
+// Zona que se ve con la vista completa, en coordenadas del dibujo. El recuadro casi nunca
+// tiene la misma proporción que el dibujo, así que se ve un poco más a lo ancho o a lo alto.
+function regionVisible() {
+  const cw = svg.clientWidth, ch = svg.clientHeight;
+  const pxPorUnidad = Math.min(cw / PROYECCION.ancho, ch / PROYECCION.alto) || 1;
+  const w = cw / pxPorUnidad, h = ch / pxPorUnidad;
+  return rectangulo((PROYECCION.ancho - w) / 2, (PROYECCION.alto - h) / 2,
+                    (PROYECCION.ancho + w) / 2, (PROYECCION.alto + h) / 2);
+}
+
 // Zona visible del recuadro, en las coordenadas del departamento ampliado
-function limitesVisibles(margenPx = 4) {
-  const { escala, tx, ty } = transformacion, m = margenPx / escala;
-  return rectangulo((0 - tx) / escala + m, (0 - ty) / escala + m,
-                    (PROYECCION.ancho - tx) / escala - m, (PROYECCION.alto - ty) / escala - m);
+function limitesVisibles(margenPx = 6) {
+  const { escala, tx, ty } = transformacion;
+  const v = regionVisible();
+  const pxPorUnidad = Math.min(svg.clientWidth / PROYECCION.ancho, svg.clientHeight / PROYECCION.alto) || 1;
+  const m = margenPx / (pxPorUnidad * escala);
+  return rectangulo((v.x1 - tx) / escala + m, (v.y1 - ty) / escala + m,
+                    (v.x2 - tx) / escala - m, (v.y2 - ty) / escala - m);
 }
 
 // Separa puntos que quedaron encimados (varios sitios en la misma ciudad) para que
@@ -401,6 +435,7 @@ async function dibujarMarcadores(codigo, escala) {
   const ocupados = centros.map(([x, y]) =>
     rectangulo(x - radio * 1.6, y - radio * 1.6, x + radio * 1.6, y + radio * 1.6));
 
+  infoMarcadores = [];
   marcadores = sitios.map((sitio, i) => {
     const [x, y] = centros[i];
     const [realX, realY] = posiciones[i];
@@ -418,6 +453,7 @@ async function dibujarMarcadores(codigo, escala) {
 
     // 2) Se elige su lugar y se reserva
     const caja = ubicarBurbuja(x, y, ancho, alto, ocupados, radio, limites);
+    infoMarcadores[i] = { x, y, realX, realY, radio, caja };
     if (!movil) ocupados.push(caja); // en celular solo se ve una burbuja a la vez: no hace falta reservar lugar para todas
     const izquierda = caja.x1 - x; // posición relativa al punto
     const arriba = caja.y1 - y;
@@ -467,15 +503,37 @@ function pasarSitio(salto) {
   mostrarSitio(departamentoAbierto, (sitioActivo + salto + total) % total);
 }
 
-function acercarCamaraA(sitio) {
-  const [x, y] = coordenadasAXY(sitio.lat, sitio.lon);
+// Acerca la cámara al sitio elegido, pero SIEMPRE encuadrando también su burbuja con el
+// nombre: si el nombre es largo o el punto está en un borde, se acerca menos (o nada)
+// en vez de dejar el texto cortado.
+function acercarCamaraA(posicion) {
+  const info = infoMarcadores[posicion];
+  if (!info) return;
   const { escala, tx, ty } = transformacion;
   const zoom = matchMedia("(max-width: 800px)").matches ? 1.3 : ZOOM_SITIO; // en celular, menos acercamiento
-  const ancho = PROYECCION.ancho / zoom;
-  const alto = PROYECCION.alto / zoom;
-  const centroX = tx + escala * x;
-  const centroY = ty + escala * y;
-  moverVista([centroX - ancho / 2, centroY - alto / 2, ancho, alto]);
+
+  // Todo lo que debe verse (punto, ubicación real y burbuja), en coordenadas de la pantalla
+  const aX = (x) => tx + escala * x, aY = (y) => ty + escala * y;
+  const r = info.radio;
+  const bx1 = aX(Math.min(info.caja.x1, info.x - r, info.realX - r)), bx2 = aX(Math.max(info.caja.x2, info.x + r, info.realX + r));
+  const by1 = aY(Math.min(info.caja.y1, info.y - r, info.realY - r)), by2 = aY(Math.max(info.caja.y2, info.y + r, info.realY + r));
+
+  const total = regionVisible(); // lo que se ve con la vista completa
+  const anchoTotal = total.x2 - total.x1, altoTotal = total.y2 - total.y1;
+  const pxPorUnidad = Math.min(svg.clientWidth / PROYECCION.ancho, svg.clientHeight / PROYECCION.alto) || 1;
+  const margen = 24 / pxPorUnidad; // aire alrededor, en unidades del dibujo
+
+  // Qué fracción de la vista completa debe verse: la del zoom normal, o más si no cabe el sitio con su burbuja
+  const s = Math.max(1 / zoom, (bx2 - bx1 + 2 * margen) / anchoTotal, (by2 - by1 + 2 * margen) / altoTotal);
+  if (s >= 1) return moverVista(VISTA_COMPLETA);
+
+  // Centro de la vista: el de lo que debe verse, sin salirse de la zona visible del mapa
+  const medioAncho = anchoTotal * s / 2, medioAlto = altoTotal * s / 2;
+  const centro = (c1, c2, medio, min, max) => Math.min(Math.max((c1 + c2) / 2, min + medio), max - medio);
+  const cx = centro(bx1, bx2, medioAncho, total.x1, total.x2);
+  const cy = centro(by1, by2, medioAlto, total.y1, total.y2);
+  const ancho = PROYECCION.ancho * s, alto = PROYECCION.alto * s;
+  moverVista([cx - ancho / 2, cy - alto / 2, ancho, alto]);
 }
 
 async function mostrarSitio(codigo, posicion, acercar = true) {
@@ -486,7 +544,7 @@ async function mostrarSitio(codigo, posicion, acercar = true) {
 
   marcadores.forEach((pin, i) => pin.classList.toggle("on", i === posicion));
   capaElevada.appendChild(marcadores[posicion]); // la burbuja elegida queda al frente
-  if (acercar) acercarCamaraA(sitio);
+  if (acercar) acercarCamaraA(posicion);
 
   // Imagen de reemplazo si no se encuentra ninguna foto
   window.IMAGEN_VACIA = `
@@ -525,7 +583,12 @@ async function mostrarSitio(codigo, posicion, acercar = true) {
   panel.querySelectorAll(".sites button").forEach((boton) => {
     const n = Number(boton.dataset.n);
     boton.onclick = () => mostrarSitio(codigo, n);
-    boton.onmouseenter = () => marcadores[n].classList.add("on");
+    // Solo resalta mientras el ratón está encima (antes quedaba "elegido" para siempre).
+    // En pantallas táctiles no se usa: el "hover" se queda pegado después de tocar.
+    if (matchMedia("(hover: hover)").matches) {
+      boton.onmouseenter = () => marcadores[n] && marcadores[n].classList.add("prev");
+      boton.onmouseleave = () => marcadores[n] && marcadores[n].classList.remove("prev");
+    }
   });
 
   // Se cargan las imágenes; si el usuario cambió de sitio mientras tanto, se descarta

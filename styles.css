@@ -116,6 +116,8 @@ body {
 }
 
 .pin:hover .caja { fill: #fff3cc; }
+.pin.prev:not(.on) .caja { fill: #fff3cc; }   /* vista previa al pasar el ratón por la lista */
+.pin.prev:not(.on) .dot { transform: scale(1.5); }
 .pin.on .caja, .pin.on:hover .caja { fill: var(--tinta); stroke: var(--amarillo); }
 .pin.on text { fill: #fff; }
 
@@ -345,7 +347,7 @@ li button:focus-visible, .sites button:focus-visible { outline: 2px solid var(--
   }
   #fab.show { display: flex; }
   #fab svg { flex: none; }
-  .depto-abierto #svg { top: 44px; }
+  .depto-abierto #svg { top: 44px; height: calc(100% - 44px); }   /* sin esto el dibujo quedaba 44 px más abajo y se cortaba su parte baja */
 }
 
 @media (prefers-reduced-motion: reduce) {
