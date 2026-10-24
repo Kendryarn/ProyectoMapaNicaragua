@@ -579,13 +579,13 @@ const DEPARTAMENTOS = {
       {
         nombre: "Museo Gregorio Aguilar Barea",
         lat: 12.1033, lon: -85.367,
-        texto: "info/Chontales/CatedralJuigalpa.txt",
+        texto: "info/Chontales/MuseoGregorio.txt",
         dato: "Alberga estatuaria precolombina de piedra de la región de Chontales.",
       },
       {
         nombre: "Catedral de Nuestra Señora de la Asunción de Juigalpa",
         lat: 12.1066, lon: -85.3644,
-        wikipedia: "",
+        texto: "info/Chontales/CatedralJuigalpa.txt",
         dato: "",
       },
       {
