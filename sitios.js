@@ -162,7 +162,7 @@ const DEPARTAMENTOS = {
       {
         nombre: "Ruinas de la Iglesia y Convento de San Francisco ",
         lat: 12.5430, lon: -87.1650,
-        texto: "info/Chinandega/ElRealejo",
+        texto: "info/Chinandega/RuinasIglesiaSanFrancisco.txt",
         dato: "",
       },
       {
