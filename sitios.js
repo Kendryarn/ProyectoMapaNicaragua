@@ -1,40 +1,23 @@
 /* =====================================================================
-   SITIOS HISTÓRICOS Y DEPARTAMENTOS   <-- AQUÍ EDITAS LA INFORMACIÓN
-
-   Cada SITIO (dentro de "sitios") tiene:
+   SITIOS HISTÓRICOS Y DEPARTAMENTOS
+   Para agregar un sitio, copia un bloque { ... } dentro de "sitios" y cambia:
      nombre    : cómo se muestra en el mapa
-     lat, lon  : ubicación (se copia de Google Maps: clic derecho sobre el lugar)
-     dato      : tu texto sobre el sitio
-     fuente    : de dónde sale el dato. Una sola, o varias en una lista:
-                   fuente: "Instituto Nicaragüense de Cultura",
-                   fuente: ["INC", "UNESCO", { texto: "INTUR", url: "https://..." }],
-     imagenes  : TUS fotos (ver más abajo). Si no lo pones, se buscan
-                 automáticamente en Wikimedia Commons.
-     busqueda  : (opcional) texto para esa búsqueda automática
-
-   Cada DEPARTAMENTO tiene:
-     info        : descripción general del departamento
-     infoFuente  : sus fuentes (texto o lista, igual que "fuente")
-
-   CÓMO PONER TUS IMÁGENES
-     1. Crea en tu repositorio una carpeta "imagenes", al lado de index.html.
-     2. Sube allí tus fotos (nombres en minúscula, sin espacios ni tildes).
-     3. Escribe sus rutas en el sitio:
-          imagenes: [
-            "imagenes/catedral-leon-1.jpg",
-            { src: "imagenes/catedral-leon-2.jpg", credito: "Foto: tu nombre" },
-          ],
-
-   Los campos "wikipedia" ya no se usan: puedes borrarlos.
+     lat, lon  : ubicación (la puede copiar de Google Maps, clic derecho)
+     busqueda  : (opcional) texto para buscar imágenes; si no, se usa el nombre
+     fuente    : de dónde sale el dato (ley, acuerdo, sitio oficial...)
+     dato      : texto propio verificado (NO copiado de Wikipedia)
+   Cada departamento tiene también "info" e "infoFuente" (descripción general).
    Los códigos (MN, LE, ...) coinciden con los de datos-mapa.js. No los cambies.
    ===================================================================== */
 
 const DEPARTAMENTOS = {
 
-  MN: {
+  MN: 
+  {
     nombre: "Managua",
     color: "#e4572e",
-    sitios: [
+    sitios: 
+    [
       {
         nombre: "Antigua Catedral de Managua",
         lat: 12.1508, lon: -86.2736,
@@ -46,6 +29,36 @@ const DEPARTAMENTOS = {
         lat: 12.1514, lon: -86.2733,
         wikipedia: "Palacio Nacional de Nicaragua",
         dato: "El 22 de agosto de 1978 un comando sandinista tomó el edificio.",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+            {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
       },
     ],
   },
@@ -117,6 +130,37 @@ const DEPARTAMENTOS = {
         wikipedia: "Corinto (Nicaragua)",
         dato: "",
       },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+       
     ],
   },
 
@@ -134,6 +178,36 @@ const DEPARTAMENTOS = {
         nombre: "Somoto",
         lat: 13.48, lon: -86.5826,
         wikipedia: "Somoto",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
         dato: "",
       },
     ],
@@ -155,6 +229,36 @@ const DEPARTAMENTOS = {
         wikipedia: "Ocotal",
         dato: "Escenario del ataque de Sandino del 16 de julio de 1927 contra tropas de EE. UU.",
       },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
     ],
   },
 
@@ -174,6 +278,36 @@ const DEPARTAMENTOS = {
         wikipedia: "Galería de Héroes y Mártires de Estelí",
         dato: "",
       },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
     ],
   },
 
@@ -185,6 +319,42 @@ const DEPARTAMENTOS = {
         nombre: "Catedral de Jinotega",
         lat: 13.0889, lon: -85.9993,
         wikipedia: "Jinotega",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
         dato: "",
       },
     ],
@@ -206,6 +376,36 @@ const DEPARTAMENTOS = {
         wikipedia: "Carlos Fonseca",
         dato: "Dedicada a Carlos Fonseca (n. Matagalpa, 1936), cofundador del FSLN en 1961.",
       },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
     ],
   },
 
@@ -217,6 +417,42 @@ const DEPARTAMENTOS = {
         nombre: "Bilwi (Puerto Cabezas)",
         lat: 14.0333, lon: -83.3833,
         wikipedia: "Bilwi",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
         dato: "",
       },
     ],
@@ -238,6 +474,36 @@ const DEPARTAMENTOS = {
         wikipedia: "Islas del Maíz",
         dato: "",
       },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
     ],
   },
 
@@ -249,6 +515,42 @@ const DEPARTAMENTOS = {
         nombre: "Casco histórico de Boaco",
         lat: 12.4719, lon: -85.6597,
         wikipedia: "Boaco",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
         dato: "",
       },
     ],
@@ -263,6 +565,42 @@ const DEPARTAMENTOS = {
         lat: 12.1033, lon: -85.367,
         wikipedia: "Juigalpa",
         dato: "Alberga estatuaria precolombina de piedra de la región de Chontales.",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
       },
     ],
   },
@@ -283,6 +621,36 @@ const DEPARTAMENTOS = {
         wikipedia: "San Carlos (Nicaragua)",
         dato: "",
       },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
     ],
   },
 
@@ -300,6 +668,37 @@ const DEPARTAMENTOS = {
         nombre: "Convento San Francisco",
         lat: 11.9327, lon: -85.9529,
         wikipedia: "Convento y Museo San Francisco",
+        dato: "",
+        
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
         dato: "",
       },
     ],
@@ -321,6 +720,36 @@ const DEPARTAMENTOS = {
         wikipedia: "Volcán Masaya",
         dato: "En 1529 fray Francisco de Bobadilla colocó una cruz en el cráter.",
       },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
     ],
   },
 
@@ -333,6 +762,42 @@ const DEPARTAMENTOS = {
         lat: 11.8585, lon: -86.2397,
         wikipedia: "Diriamba",
         dato: "El Güegüense fue declarado Patrimonio Oral e Intangible por la UNESCO en 2005.",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
       },
     ],
   },
@@ -352,6 +817,36 @@ const DEPARTAMENTOS = {
         lat: 11.5167, lon: -85.5833,
         wikipedia: "Isla de Ometepe",
         dato: "Isla de dos volcanes con petroglifos y estatuaria precolombina.",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
+      },
+      {
+        nombre: "",
+        lat: 1, lon: 1,
+        wikipedia: "",
+        dato: "",
       },
     ],
   },
