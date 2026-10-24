@@ -57,7 +57,7 @@ body {
   overflow: hidden;
 }
 
-svg { display: block; width: 100%; height: 100%; }
+#svg { display: block; width: 100%; height: 100%; }  /* solo el mapa, no los íconos */
 
 .dep {
   stroke: #fff;
@@ -137,6 +137,9 @@ svg { display: block; width: 100%; height: 100%; }
   transform-origin: center;
 }
 .pin.on .ring { animation: pulso 1.6s ease-out infinite; }
+
+/* Número dentro del punto: solo en celular */
+.pin .num { display: none; }
 
 @keyframes pulso {
   from { transform: scale(1); opacity: 0.9; }
@@ -302,9 +305,35 @@ li button:focus-visible, .sites button:focus-visible { outline: 2px solid var(--
 
   /* El mapa conserva su proporción y ocupa todo el ancho */
   #stage { flex: none; height: auto; aspect-ratio: 1101 / 991; }
-  #stage svg { position: absolute; inset: 0; }
+  #svg { position: absolute; inset: 0; }
 
   #panel { flex: none; width: 100%; overflow: visible; }
+
+  /* En celular los sitios se marcan con números; el nombre aparece solo en el elegido */
+  .pin:not(.on) .caja, .pin:not(.on) .guia, .pin:not(.on) text:not(.num) { display: none; }
+  .pin .num { display: block; fill: var(--tinta); font-weight: 700; }
+  .pin.on .num { fill: var(--tinta); }
+  .sites { counter-reset: sitio; }
+  .sites button { counter-increment: sitio; }
+  .sites button::before { content: counter(sitio) ". "; font-weight: 700; }
+
+  /* Botón "Volver al mapa": una barra a todo el ancho, arriba del mapa.
+     Es fácil de tocar con el dedo y no tapa el dibujo (el mapa se acomoda debajo) */
+  #fab {
+    top: 0; left: 0; right: 0;
+    height: 44px;
+    padding: 0 12px;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size: 15px;
+    border: 0;
+    border-bottom: 1px solid var(--linea);
+    border-radius: 0;
+    box-shadow: none;
+  }
+  #fab.show { display: flex; }
+  #fab svg { flex: none; }
+  .depto-abierto #svg { top: 44px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

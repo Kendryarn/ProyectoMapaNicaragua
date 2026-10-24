@@ -68,7 +68,7 @@ const escaparHTML = (texto) => String(texto).replace(/</g, "&lt;");
 function factorPantalla() {
   if (!matchMedia("(max-width: 800px)").matches) return 1;
   const pxPorUnidad = Math.min(svg.clientWidth / PROYECCION.ancho, svg.clientHeight / PROYECCION.alto);
-  return pxPorUnidad > 0 ? 0.87 / pxPorUnidad : 1;
+  return pxPorUnidad > 0 ? 0.75 / pxPorUnidad : 1;
 }
 
 // Grosor del borde blanco de los departamentos (lo lee styles.css)
@@ -210,6 +210,7 @@ function abrirDepartamento(codigo) {
   animando = true;
   departamentoAbierto = codigo;
   tooltip.style.opacity = 0;
+  document.body.classList.add("depto-abierto"); // en celular, la barra "Volver" ocupa la parte de arriba del mapa
 
   const original = elementosDepartamento[codigo];
   const caja = original.getBBox();
@@ -287,6 +288,7 @@ function volverAlMapa() {
   if (animando || !departamentoAbierto) return;
   animando = true;
   const codigo = departamentoAbierto;
+  document.body.classList.remove("depto-abierto");
 
   marcadores.forEach((pin) => pin.remove());
   marcadores = [];
@@ -315,9 +317,11 @@ const seCruzan = (a, b) => a.x1 < b.x2 && a.x2 > b.x1 && a.y1 < b.y2 && a.y2 > b
 
 // Busca un lugar para la burbuja alrededor del punto (x, y) donde no tape
 // a otras burbujas ni a otros puntos. Prueba 8 direcciones a distancias crecientes.
-function ubicarBurbuja(x, y, ancho, alto, ocupados, radio) {
+function ubicarBurbuja(x, y, ancho, alto, ocupados, radio, limites) {
   const margen = radio * 0.5;
-  for (const factor of [1.8, 3, 4.5, 6.5, 9, 12]) {
+  // Primero se busca un lugar DENTRO del recuadro visible; si no hay, se acepta cualquiera
+  for (const dentro of [true, false]) {
+   for (const factor of [1.8, 3, 4.5, 6.5, 9, 12]) {
     const d = radio * factor;
     const diag = d * 0.7;
     const candidatas = [
@@ -331,9 +335,12 @@ function ubicarBurbuja(x, y, ancho, alto, ocupados, radio) {
       [x - diag - ancho, y + diag],       // abajo a la izquierda
     ];
     for (const [bx, by] of candidatas) {
+      if (dentro && limites &&
+          (bx < limites.x1 || by < limites.y1 || bx + ancho > limites.x2 || by + alto > limites.y2)) continue;
       const caja = rectangulo(bx - margen, by - margen, bx + ancho + margen, by + alto + margen);
       if (!ocupados.some((o) => seCruzan(caja, o))) return rectangulo(bx, by, bx + ancho, by + alto);
     }
+   }
   }
   return rectangulo(x + radio * 2, y - alto / 2, x + radio * 2 + ancho, y + alto / 2);
 }
@@ -341,12 +348,17 @@ function ubicarBurbuja(x, y, ancho, alto, ocupados, radio) {
 async function dibujarMarcadores(codigo, escala) {
   await document.fonts.ready; // para medir bien el texto con la tipografía final
   if (departamentoAbierto !== codigo) return;
+  // Zona visible del recuadro, en las coordenadas del departamento ampliado
+  const t = transformacion, m = 4 / t.escala;
+  const limites = rectangulo((0 - t.tx) / t.escala + m, (0 - t.ty) / t.escala + m,
+                             (PROYECCION.ancho - t.tx) / t.escala - m, (PROYECCION.alto - t.ty) / t.escala - m);
   escala = escala / factorPantalla(); // en pantallas chicas todo se dibuja más grande
+  const movil = matchMedia("(max-width: 800px)").matches;
 
   // Todo se divide entre "escala" para que los textos y puntos mantengan
   // su tamaño en pantalla aunque el departamento esté agrandado.
   const sitios = DEPARTAMENTOS[codigo].sitios;
-  const radio = 8 / escala;
+  const radio = (movil ? 12 : 8) / escala; // en celular, punto más grande para tocarlo
   const relleno = 7 / escala;
   const posiciones = sitios.map((s) => coordenadasAXY(s.lat, s.lon));
 
@@ -369,8 +381,8 @@ async function dibujarMarcadores(codigo, escala) {
     const alto = medida.height + relleno * 2;
 
     // 2) Se elige su lugar y se reserva
-    const caja = ubicarBurbuja(x, y, ancho, alto, ocupados, radio);
-    ocupados.push(caja);
+    const caja = ubicarBurbuja(x, y, ancho, alto, ocupados, radio, limites);
+    if (!movil) ocupados.push(caja); // en celular solo se ve una burbuja a la vez: no hace falta reservar lugar para todas
     const izquierda = caja.x1 - x; // posición relativa al punto
     const arriba = caja.y1 - y;
 
@@ -394,6 +406,11 @@ async function dibujarMarcadores(codigo, escala) {
     // 5) El punto sobre el mapa, con un aro que pulsa cuando está elegido
     crearSVG("circle", { r: radio, class: "ring", "stroke-width": 2 / escala }, pin);
     crearSVG("circle", { r: radio, class: "dot", "stroke-width": 2 / escala }, pin);
+    // Número dentro del punto (solo se ve en celular; ahí el nombre aparece solo en el sitio elegido)
+    const numero = crearSVG("text", {
+      class: "num", x: 0, y: radio * 0.4, "font-size": radio * 1.15, "text-anchor": "middle",
+    }, pin);
+    numero.textContent = i + 1;
 
     pin.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 350, delay: i * 120, fill: "backwards" });
     pin.onclick = () => mostrarSitio(codigo, i);
@@ -411,8 +428,9 @@ function pasarSitio(salto) {
 function acercarCamaraA(sitio) {
   const [x, y] = coordenadasAXY(sitio.lat, sitio.lon);
   const { escala, tx, ty } = transformacion;
-  const ancho = PROYECCION.ancho / ZOOM_SITIO;
-  const alto = PROYECCION.alto / ZOOM_SITIO;
+  const zoom = matchMedia("(max-width: 800px)").matches ? 1.3 : ZOOM_SITIO; // en celular, menos acercamiento
+  const ancho = PROYECCION.ancho / zoom;
+  const alto = PROYECCION.alto / zoom;
   const centroX = tx + escala * x;
   const centroY = ty + escala * y;
   moverVista([centroX - ancho / 2, centroY - alto / 2, ancho, alto]);
