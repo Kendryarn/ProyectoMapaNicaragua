@@ -761,7 +761,7 @@ const DEPARTAMENTOS = {
       },
       {
         nombre: "Mercado de Artesanías de Masaya",
-        lat: 11.9736, lon: 86.0961,
+        lat: 11.9736, lon: -86.0961,
         texto: "info/Masaya/MercadoArtesanias.txt",
         dato: "",
       },
