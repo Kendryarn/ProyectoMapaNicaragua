@@ -89,7 +89,7 @@ const DEPARTAMENTOS = {
       {
         nombre: "Basílica Catedral de la Asunción de León",
         lat: 12.4350, lon: -86.8781,
-        texto: "info/Leon/Basilica_Catedral_de_la_Asunción_de_León.txt",
+        texto: "info/Leon/Basílica_Catedral_de_la_Asunción_de_León.txt",
         fuente: "",
       },
       {
@@ -254,13 +254,13 @@ const DEPARTAMENTOS = {
       {
         nombre: "Santuario de la Virgen de la Piedra (Dipilto)",
         lat: 13.7160, lon: -86.5050,
-        texto: "info/Nueva_Segovia/Santuario_de_la_Virgen_de_la_Piedra.txt",
+        texto: "info/Nueva_Segovia/Santuario_de_la_Virgen_de_la_Piedra_(Dipilto).txt",
         dato: "",
       },
       {
         nombre: "Minas de San Albino (El Jícaro)",
         lat: 13.6948, lon: -86.0973,
-        texto: "info/Nueva_Segovia/Minas_de_San_Albino_(El_Jícaro).txt",
+        texto: "info/Nueva_Segovia/Minas_de_San_Albino_(El Jícaro).txt",
         dato: "",
       },
       {
@@ -438,7 +438,7 @@ const DEPARTAMENTOS = {
       {
         nombre: "Bilwi (Puerto Cabezas)",
         lat: 14.0284, lon: -83.3823,
-        texto: "info/RAAN/Bilwi_(Puerto_Cabezas).txt",
+        texto: "info/RAAN/Bilwi_(Puerto Cabezas).txt",
         dato: "",
       },
       {
@@ -517,7 +517,7 @@ const DEPARTAMENTOS = {
       {
         nombre: "Monkey Point (Pim's Bay)",
         lat: 11.6000, lon: -83.6670,
-        texto: "info/RAAS/Monkey_Point_(Pim's Bay).txt",
+        texto: "info/RAAS/Monkey_Point_(Pim's_Bay).txt",
         dato: "",
       },
       {
