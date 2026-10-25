@@ -370,7 +370,7 @@ const DEPARTAMENTOS = {
       },
       {
         nombre: "Parque Nacional Saslaya",
-        lat: 13.7605, lon: -84.9777,
+        lat: 13.7600, lon: -85.0500,
         texto: "info/Jinotega/ParqueNacionalSaslaya.txt",
         dato: "",
       },
@@ -444,7 +444,7 @@ const DEPARTAMENTOS = {
       },
       {
         nombre: "Reserva de Biosfera Bosawás",
-        lat: 14.0305, lon: -84.5878,
+        lat: 13.8500, lon: -84.8500,
         texto: "info/RAAN/Reserva_de_Biosfera_Bosawás.txt",
         dato: "",
       },
@@ -784,7 +784,7 @@ const DEPARTAMENTOS = {
         nombre: "Basílica Menor de San Sebastián (Diriamba)",
         lat: 11.8571, lon: -86.2401,
         texto: "info/Carazo/Basílica_Menor_de_San_Sebastián.txt",
-        dato: "",
+        imagenes: ["fotos/Carazo/BasilicaSebs/Basilica1.jfif", "fotos/Carazo/BasilicaSebs/Basilica2.jpg", "fotos/Carazo/BasilicaSebs/Basilica3.jpg", "fotos/Carazo/BasilicaSebs/Basilica4.jpg", "fotos/Carazo/BasilicaSebs/Basilica5.jpg"],
       },
       {
         nombre: "Parroquia Santiago Apóstol (Jinotepe)",
@@ -820,7 +820,7 @@ const DEPARTAMENTOS = {
         nombre: "Balneario La Boquita",
         lat: 11.6783, lon: -86.3824,
         texto: "info/Carazo/Balneario_La_Boquita.txt",
-        dato: "",
+        imagenes: ["fotos/Carazo/LaBoquita/LaBoquita1.jfif", "fotos/Carazo/LaBoquita/LaBoquita2.jfif", "fotos/Carazo/LaBoquita/LaBoquita3.jfif", "fotos/Carazo/LaBoquita/LaBoquita4.jfif", "fotos/Carazo/LaBoquita/LaBoquita5.jfif"],
       },
     ],
   },
