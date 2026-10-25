@@ -554,7 +554,7 @@ const DEPARTAMENTOS = {
       {
         nombre: "Boaco Viejo",
         lat: 12.4580, lon: -85.5334,
-        textp: "info/Boaco/BoacoViejo.txt",
+        texto: "info/Boaco/BoacoViejo.txt",
         dato: "",
       },
       {
