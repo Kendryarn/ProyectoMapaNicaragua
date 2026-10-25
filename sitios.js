@@ -370,7 +370,7 @@ const DEPARTAMENTOS = {
       },
       {
         nombre: "Parque Nacional Saslaya",
-        lat: 13.7690, lon: -85.0358,
+        lat: 13.7605, lon: -84.9777,
         texto: "info/Jinotega/ParqueNacionalSaslaya.txt",
         dato: "",
       },
@@ -444,7 +444,7 @@ const DEPARTAMENTOS = {
       },
       {
         nombre: "Reserva de Biosfera Bosawás",
-        lat: 13.9100, lon: -85.0300,
+        lat: 14.0305, lon: -84.5878,
         texto: "info/RAAN/Reserva_de_Biosfera_Bosawás.txt",
         dato: "",
       },
