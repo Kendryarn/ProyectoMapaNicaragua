@@ -790,13 +790,13 @@ const DEPARTAMENTOS = {
         nombre: "Parroquia Santiago Apóstol (Jinotepe)",
         lat: 11.8480, lon: -86.1986,
         texto: "info/Carazo/Parroquia_Santiago_Apóstol_(Jinotepe).txt",
-        dato: "",
+        imagenes: ["fotos/Carazo/ParroquiaSantJin/Parroquia1.jfif", "fotos/Carazo/ParroquiaSantJin/Parroquia2.jfif", "fotos/Carazo/ParroquiaSantJin/Parroquia3.jfif", "fotos/Carazo/ParroquiaSantJin/Parroquia4.jfif", "fotos/Carazo/ParroquiaSantJin/Parroquia5.jfif"],
       },
       {
         nombre: "Ciudad de Diriamba",
         lat: 11.8561, lon: -86.2403,
         texto: "info/Carazo/Ciudad_de_Diriamba.txt",
-        dato: "",
+        imagenes: ["fotos/Carazo/Diriamba/Diriamba1.jfif", "fotos/Carazo/Diriamba/Diriamba2.jfif", "fotos/Carazo/Diriamba/Diriamba3.jfif", "fotos/Carazo/Diriamba/Diriamba4.jfif", "fotos/Carazo/Diriamba/Diriamba5.jfif"],
       },
       {
         nombre: "Ciudad de Jinotepe",
@@ -808,13 +808,13 @@ const DEPARTAMENTOS = {
         nombre: "Museo Historia-Cultura Diriamba",
         lat: 11.8560, lon: -86.2400,
         texto: "info/Carazo/Museo_Historia-Cultura_Diriamba.txt",
-        dato: "",
+        imagenes: ["fotos/Carazo/MuseoDiriamba/Museo1.jfif", "fotos/Carazo/MuseoDiriamba/Museo2.jfif", "fotos/Carazo/MuseoDiriamba/Museo3.jfif", "fotos/Carazo/MuseoDiriamba/Museo4.jfif", "fotos/Carazo/MuseoDiriamba/Museo5.jfif"],
       },
       {
         nombre: "Reloj Público de Diriamba",
         lat: 11.8590, lon: -86.2390,
         texto: "info/Carazo/Reloj_Público_de_Diriamba.txt",
-        dato: "",
+        imagenes: ["fotos/Carazo/RelojDir/Reloj1.jfif", "fotos/Carazo/RelojDir/Reloj2.jfif", "fotos/Carazo/RelojDir/Reloj3.jfif", "fotos/Carazo/RelojDir/Reloj4.jfif", "fotos/Carazo/RelojDir/Reloj5.jfif"],
       },
       {
         nombre: "Balneario La Boquita",
