@@ -611,7 +611,7 @@ const DEPARTAMENTOS = {
         nombre: "Ciudad de Juigalpa",
         lat: 12.1061, lon: -85.3652,
         texto: "info/Chontales/CiudadJuigalpa.txt",
-        imagenes: ["fotos/Chontales/CiudadDeJuilgapa1.jpg", "fotos/Chontales/CiudadDeJuigalpa2.jpg", "fotos/Chontales/CiudadDeJuigalpa3.jpg", "fotos/Chontales/CiudadDeJuigalpa4.jpg", "fotos/Chontales/CiudadDeJuigalpa5.jpg"],
+        imagenes: ["fotos/Chontales/CiudadDeJuigalpa1.jpg", "fotos/Chontales/CiudadDeJuigalpa2.jpg", "fotos/Chontales/CiudadDeJuigalpa3.jpg", "fotos/Chontales/CiudadDeJuigalpa4.jpg", "fotos/Chontales/CiudadDeJuigalpa5.jpg"],
       },
       {
         nombre: "Río Mayales",
