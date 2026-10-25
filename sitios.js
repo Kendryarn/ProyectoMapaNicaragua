@@ -820,7 +820,7 @@ const DEPARTAMENTOS = {
         nombre: "Balneario La Boquita",
         lat: 11.6783, lon: -86.3824,
         texto: "info/Carazo/Balneario_La_Boquita.txt",
-        imagenes: ["fotos/Carazo/LaBoquita/LaBoquita1.jfif", "fotos/Carazo/LaBoquita/LaBoquita2.jfif", "fotos/Carazo/LaBoquita/LaBoquita3.jfif", "fotos/Carazo/LaBoquita/LaBoquita4.jfif", "fotos/Carazo/LaBoquita/LaBoquita5.jfif"],
+        imagenes: ["fotos/Carazo/LaBoquita/Laboquita1.jfif", "fotos/Carazo/LaBoquita/Laboquita2.jfif", "fotos/Carazo/Laboquita/LaBoquita3.jfif", "fotos/Carazo/Laboquita/LaBoquita4.jfif", "fotos/Carazo/LaBoquita/Laboquita5.jfif"],
       },
     ],
   },
