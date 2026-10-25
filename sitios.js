@@ -784,7 +784,7 @@ const DEPARTAMENTOS = {
         nombre: "Basílica Menor de San Sebastián (Diriamba)",
         lat: 11.8571, lon: -86.2401,
         texto: "info/Carazo/Basílica_Menor_de_San_Sebastián.txt",
-        imagenes: ["fotos/Carazo/BasilicaSebs/Basilica1.jfif", "fotos/Carazo/BasilicaSebs/Basilica2.jpg", "fotos/Carazo/BasilicaSebs/Basilica3.jpg", "fotos/Carazo/BasilicaSebs/Basilica4.jpg", "fotos/Carazo/BasilicaSebs/Basilica5.jpg"],
+        imagenes: ["fotos/Carazo/BasilicaSebs/Basilica1.jfif", "fotos/Carazo/BasilicaSebs/Basilica2.jfif", "fotos/Carazo/BasilicaSebs/Basilica3.jfif", "fotos/Carazo/BasilicaSebs/Basilica4.jfif", "fotos/Carazo/BasilicaSebs/Basilica5.jfif"],
       },
       {
         nombre: "Parroquia Santiago Apóstol (Jinotepe)",
