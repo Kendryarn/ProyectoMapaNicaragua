@@ -309,7 +309,7 @@ const DEPARTAMENTOS = {
       },
       {
         nombre: "Murales Históricos e Insurreccionales del Centro Urbano",
-        lat: 12.1534, lon: -86.2714,
+        lat: 13.0919, lon: -86.3539,
         texto: "info/Esteli/Murales.txt",
         imagenes: ["fotos/Esteli/MuralesHistoricos/Murales1.jpg", "fotos/Esteli/MuralesHistoricos/Murales2.jpg", "fotos/Esteli/MuralesHistoricos/Murales3.jpg", "fotos/Esteli/MuralesHistoricos/Murales4.jpg", "fotos/Esteli/MuralesHistoricos/Murales5.jpg"]
       },
