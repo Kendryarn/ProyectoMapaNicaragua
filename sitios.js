@@ -802,7 +802,7 @@ const DEPARTAMENTOS = {
         nombre: "Ciudad de Jinotepe",
         lat: 11.8478, lon: -86.1993,
         texto: "info/Carazo/Ciudad_de_Jinotepe.txt",
-        dato: "",
+        imagenes: ["fotos/Carazo/CiudadJinotepe/Jinotepe1.jfif", "fotos/Carazo/CiudadJinotepe/Jinotepe2.jfif", "fotos/Carazo/CiudadJinotepe/Jinotepe3.jfif", "fotos/Carazo/CiudadJinotepe/Jinotepe4.jfif", "fotos/Carazo/CiudadJinotepe/Jinotepe5.jfif"],
       },
       {
         nombre: "Museo Historia-Cultura Diriamba",
