@@ -542,19 +542,19 @@ const DEPARTAMENTOS = {
       {
         nombre: "Parroquia Santiago Apóstol de Boaco",
         lat: 12.4729, lon: -85.6593,
-        texto: "info/Boaco/ParroquiaSantiagoApostol.txt",
+        texto: "info/Boaco/Parroquia Santiago Apóstol de Boaco.txt",
         dato: "",
       },
       {
         nombre: "Ciudad de Boaco",
         lat: 12.4726, lon: -85.6600,
-        texto: "info/Boaco/CiudadBoaco.txt",
+        texto: "info/Boaco/Ciudad de Boaco.txt",
         dato: "",
       },
       {
         nombre: "Boaco Viejo",
         lat: 12.4580, lon: -85.5334,
-        texto: "info/Boaco/BoacoViejo.txt",
+        texto: "info/Boaco/Boaco Viejo.txt",
         dato: "",
       },
       {
@@ -566,7 +566,7 @@ const DEPARTAMENTOS = {
       {
         nombre: "El Caracol",
         lat: 12.3514, lon: -85.8899,
-        texto: "info/Boaco/ElCaracol.txt",
+        texto: "info/Boaco/El Caracol.txt",
         dato: "",
       },
       {
