@@ -563,9 +563,11 @@ async function mostrarSitio(codigo, posicion, acercar = true) {
 
   panel.innerHTML = `
     <h2>${depto.nombre}</h2>
-    ${depto.info
+    <div id="infoDepto">${depto.info
       ? `<p>${escaparHTML(depto.info)}</p>${htmlFuentes(depto.infoFuentes || depto.infoFuente)}`
-      : `<p class="mute">Información del departamento en preparación.</p>`}
+      : depto.texto
+        ? `<p class="mute">Cargando información…</p>`
+        : `<p class="mute">Información del departamento en preparación.</p>`}</div>
     <div class="sites">${botonesSitios}</div>
     <div class="card" style="--bar:${depto.color}">
       ${navegacion}
@@ -592,10 +594,19 @@ async function mostrarSitio(codigo, posicion, acercar = true) {
   });
 
   // Se cargan las imágenes; si el usuario cambió de sitio mientras tanto, se descarta
+  // Descripción del departamento desde su .txt (campo "texto" del departamento en sitios.js)
+  if (depto.texto) {
+    cargarArchivo(depto.texto).then((texto) => {
+      if (departamentoAbierto !== codigo || !$("infoDepto")) return;
+      if (texto) $("infoDepto").innerHTML = `<p style="white-space: pre-line">${textoConEnlaces(texto)}</p>`;
+      else if (!depto.info) $("infoDepto").innerHTML = `<p class="mute">Información del departamento en preparación.</p>`;
+    });
+  }
+
   // Texto largo desde textos/<nombre-del-sitio>.txt (si existe, reemplaza a "dato")
   cargarTexto(sitio).then((texto) => {
     if (!texto || departamentoAbierto !== codigo || sitioActivo !== posicion || !$("txt")) return;
-    $("txt").innerHTML = `<p style="white-space: pre-line">${escaparHTML(texto)}</p>`;
+    $("txt").innerHTML = `<p style="white-space: pre-line">${textoConEnlaces(texto)}</p>`;
   });
 
   const propias = imagenesPropias(sitio);
@@ -635,8 +646,17 @@ function idDeNombre(nombre) {
     .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }
 
+// Escapa el texto y vuelve tocables los enlaces (https://...) de las fuentes
+function textoConEnlaces(texto) {
+  return escaparHTML(texto).replace(/(https?:\/\/[^\s"<]+)/g,
+    '<a href="$1" target="_blank" rel="noopener">$1</a>');
+}
+
 async function cargarTexto(sitio) {
-  const ruta = sitio.texto || `textos/${sitio.id || idDeNombre(sitio.nombre)}.txt`;
+  return cargarArchivo(sitio.texto || `textos/${sitio.id || idDeNombre(sitio.nombre)}.txt`);
+}
+
+async function cargarArchivo(ruta) {
   if (ruta in cacheTextos) return cacheTextos[ruta];
   let texto = "";
   try {

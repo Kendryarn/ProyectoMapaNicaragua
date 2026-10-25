@@ -103,13 +103,13 @@ const DEPARTAMENTOS = {
         nombre: "Casa Museo Archivo Rubén Darío",
         lat: 12.4348, lon: -86.8829,
         texto: "info/Leon/Casa_Museo_Archivo_Rubén_Darío.txt",
-        imagenes: ["fotos/Leon/CasaMuseoRb/RubenLeon1.jpg", "fotos/Leon/CasaMuseoRb/RubenLeon2.jpg", "fotos/Leon/CasaMuseoRb/RubenLeon3.jpg", "fotos/Leon/CasaMuseoRb/RubenLeon4.jpg", "fotos/Leon/CasaMuseoRb/RubenLeon5.jpg"],
+        imagenes: ["fotos/Leon/CasaMuseoRB/RubenLeon1.jpg", "fotos/Leon/CasaMuseoRB/RubenLeon2.jpg", "fotos/Leon/CasaMuseoRB/RubenLeon3.jpg", "fotos/Leon/CasaMuseoRB/RubenLeon4.jpg", "fotos/Leon/CasaMuseoRB/RubenLeon5.jpg"],
       },
       {
         nombre: "Iglesia La Recolección",
         lat: 12.4375, lon: -86.8770,
         texto: "info/Leon/Iglesia_La_Recolección.txt",
-        imagenes: ["fotos/Leon/Larecoleccion/iglesiaLeon1.jpg", "fotos/Leon/Larecoleccion/iglesiaLeon2.jpg", "fotos/Leon/Larecoleccion/iglesiaLeon3.jpg", "fotos/Leon/Larecoleccion/iglesiaLeon4.jpg", "fotos/Leon/Larecoleccion/iglesiaLeon5.jpg"],
+        imagenes: ["fotos/Leon/Larecoleccion/IglesiaLeon1.jpg", "fotos/Leon/Larecoleccion/IglesiaLeon2.jpg", "fotos/Leon/Larecoleccion/IglesiaLeon3.jpg", "fotos/Leon/Larecoleccion/IglesiaLeon4.jpg", "fotos/Leon/Larecoleccion/IglesiaLeon5.jpg"],
       },
       {
         nombre: "Fortín de Acosasco",
@@ -201,7 +201,7 @@ const DEPARTAMENTOS = {
         nombre: "Iglesia de Santiago Apóstol de Somoto",
         lat: 13.48367, lon: -86.58213,
         texto: "info/Madriz/Iglesia_de_Santiago_Apóstol_de_Somoto.txt",
-        imagenes: ["fotos/Madriz/SantiagoApostolSomoto/iglesiaMadriz1.jpg", "fotos/Madriz/SantiagoApostolSomoto/iglesiaMadriz2.jpg", "fotos/Madriz/SantiagoApostolSomoto/iglesiaMadriz3.jpg", "fotos/Madriz/AntiagoApostolSomoto/iglesiaMadriz4.jpg", "fotos/Madriz/SantiagoApostolSomoto/iglesiaMadriz5.jpg"],
+        imagenes: ["fotos/Madriz/SantiagoApostolSomoto/iglesiaMadriz1.jpg", "fotos/Madriz/SantiagoApostolSomoto/iglesiaMadriz2.jpg", "fotos/Madriz/SantiagoApostolSomoto/iglesiaMadriz3.jpg", "fotos/Madriz/SantiagoApostolSomoto/iglesiaMadriz4.jpg", "fotos/Madriz/SantiagoApostolSomoto/iglesiaMadriz5.jpg"],
       },
       {
         nombre: "San José de Cusmapa",
