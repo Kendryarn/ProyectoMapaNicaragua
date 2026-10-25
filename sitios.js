@@ -391,7 +391,7 @@ const DEPARTAMENTOS = {
         nombre: "Ciudad de Matagalpa",
         lat: 12.9284, lon: -85.9184,
         texto: "info/Matagalpa/Ciudad_de_Matagalpa.txt",
-        imagenes: ["fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa.jpg", "fotos/Matagalpa/ciudadMatagalpa2.jpg", "fotos/Matagalpa/ciudadMatagalpa3.jpg", "fotos/Matagalpa/ciudadMatagalpa4.jpg", "fotos/Matagalpa/ciudadMatagalpa5.jpg"],
+        imagenes: ["fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa.jpg", "fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa2.jpg", "fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa3.jpg","fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa4.jpg","fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa5.jpg"],
       },
       {
         nombre: "Catedral San Pedro Apóstol",
