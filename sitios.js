@@ -34,6 +34,7 @@ const DEPARTAMENTOS = {
   MN: {
     nombre: "Managua",
     color: "#e4572e",
+    texto: "info/Managua/Managua.txt",
     sitios: [
       {
         nombre: "Antigua Catedral de Santiago de Managua",
