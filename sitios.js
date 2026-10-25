@@ -201,7 +201,7 @@ const DEPARTAMENTOS = {
         nombre: "Iglesia de Santiago Apóstol de Somoto",
         lat: 13.48367, lon: -86.58213,
         texto: "info/Madriz/Iglesia_de_Santiago_Apóstol_de_Somoto.txt",
-        imagenes: ["fotos/Madriz/AntiagoApostolSomoto/iglesiaMadriz1.jpg", "fotos/Madriz/AntiagoApostolSomoto/iglesiaMadriz2.jpg", "fotos/Madriz/AntiagoApostolSomoto/iglesiaMadriz3.jpg", "fotos/Madriz/AntiagoApostolSomoto/iglesiaMadriz4.jpg", "fotos/Madriz/AntiagoApostolSomoto/iglesiaMadriz5.jpg"],
+        imagenes: ["fotos/Madriz/SantiagoApostolSomoto/iglesiaMadriz1.jpg", "fotos/Madriz/SantiagoApostolSomoto/iglesiaMadriz2.jpg", "fotos/Madriz/SantiagoApostolSomoto/iglesiaMadriz3.jpg", "fotos/Madriz/AntiagoApostolSomoto/iglesiaMadriz4.jpg", "fotos/Madriz/SantiagoApostolSomoto/iglesiaMadriz5.jpg"],
       },
       {
         nombre: "San José de Cusmapa",
@@ -293,7 +293,7 @@ const DEPARTAMENTOS = {
         nombre: "Sitio Arqueológico de Condega",
         lat: 13.3650, lon: -86.3985,
         texto: "info/Esteli/Condega.txt",
-        imagenes: ["fotos/Esteli/AqueologicoCondega/Condega1.jpg", "fotos/Esteli/AqueologicoCondega/Condega2.jpg", "fotos/Esteli/AqueologicoCondega/Condega3.jpg", "fotos/Esteli/AqueologicoCondega/Condega4.jpg", "fotos/Esteli/AqueologicoCondega/Condega5.jpg"],
+        imagenes: ["fotos/Esteli/ArqueologicoCondega/Condega1.jpg", "fotos/Esteli/ArqueologicoCondega/Condega2.jpg", "fotos/Esteli/ArqueologicoCondega/Condega3.jpg", "fotos/Esteli/ArqueologicoCondega/Condega4.jpg", "fotos/Esteli/ArqueologicoCondega/Condega5.jpg"],
       },
       {
         nombre: "Monumento La Bomba",
@@ -366,7 +366,7 @@ const DEPARTAMENTOS = {
         nombre: "Reserva Natural Cerro Datanlí-El Diablo",
         lat: 13.1330, lon: -85.9209,
         texto: "info/Jinotega/ReservaCerroDatanli.txt",
-        imagenes: ["fotos/Jinotega/DatiliElDiablo1.jpg", "fotos/Jinotega/DatanliElDiablo2.jpg", "fotos/Jinotega/DatanliElDiablo3.jpg", "fotos/Jinotega/DatanliElDiablo4.jpg", "fotos/Jinotega/DatanliElDiablo5.jpg"],
+        imagenes: ["fotos/Jinotega/DantiliElDiablo1.jpg", "fotos/Jinotega/DantiliElDiablo2.jpg", "fotos/Jinotega/DantiliElDiablo3.jpg", "fotos/Jinotega/DantiliElDiablo4.jpg", "fotos/Jinotega/DantiliElDiablo5.jpg"],
       },
       {
         nombre: "Parque Nacional Saslaya",
@@ -391,7 +391,7 @@ const DEPARTAMENTOS = {
         nombre: "Ciudad de Matagalpa",
         lat: 12.9284, lon: -85.9184,
         texto: "info/Matagalpa/Ciudad_de_Matagalpa.txt",
-        imagenes: ["fotos/Matagalpa/ciudadMatagalpa.jpg", "fotos/Matagalpa/ciudadMatagalpa2.jpg", "fotos/Matagalpa/ciudadMatagalpa3.jpg", "fotos/Matagalpa/ciudadMatagalpa4.jpg", "fotos/Matagalpa/ciudadMatagalpa5.jpg"],
+        imagenes: ["fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa.jpg", "fotos/Matagalpa/ciudadMatagalpa2.jpg", "fotos/Matagalpa/ciudadMatagalpa3.jpg", "fotos/Matagalpa/ciudadMatagalpa4.jpg", "fotos/Matagalpa/ciudadMatagalpa5.jpg"],
       },
       {
         nombre: "Catedral San Pedro Apóstol",
@@ -525,7 +525,7 @@ const DEPARTAMENTOS = {
         nombre: "El Rama - Puerto Fluvial Histórico",
         lat: 12.1589, lon: -84.2197,
         texto: "info/RAAS/PuertoFluvial.txt",
-        imagenes: ["fotos/RACCS/PuertoFluvial/ElRama1.jpg", "fotos/RACCS/PuertoFluvial/ElRama2.jpg", "fotos/RACCS/PuertoFluvial/ElRama3.jpg", "fotos/RACCS/PuertoFluvial/ElRama4.jpg", "fotos/RACCS/PuertoFluvial/ElRama5.jpg"],
+        imagenes: ["fotos/RACCS/PuertoFluvial/Rama1.jpg", "fotos/RACCS/PuertoFluvial/Rama2.jpg", "fotos/RACCS/PuertoFluvial/Rama3.jpg", "fotos/RACCS/PuertoFluvial/Rama4.jpg", "fotos/RACCS/PuertoFluvial/Rama5.jpg"],
       },
     ],
   },
