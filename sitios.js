@@ -109,7 +109,7 @@ const DEPARTAMENTOS = {
         nombre: "Iglesia La Recolección",
         lat: 12.4375, lon: -86.8770,
         texto: "info/Leon/Iglesia_La_Recolección.txt",
-        imagenes: ["fotos/Leon/Larecoleccion/IglesiaLeon1.jpg", "fotos/Leon/Larecoleccion/IglesiaLeon2.jpg", "fotos/Leon/Larecoleccion/IglesiaLeon3.jpg", "fotos/Leon/Larecoleccion/IglesiaLeon4.jpg", "fotos/Leon/Larecoleccion/IglesiaLeon5.jpg"],
+        imagenes: ["fotos/Leon/Larecoleccion/IglesiaLeon1.jpg", "fotos/Leon/Larecoleccion/IglesiaLeon2.jpg", "fotos/Leon/Larecoleccion/IglesiaLeon3.jpg", "fotos/Leon/Larecoleccion/IglesiaLeon4.jpg"],
       },
       {
         nombre: "Fortín de Acosasco",
@@ -201,13 +201,13 @@ const DEPARTAMENTOS = {
         nombre: "San José de Cusmapa",
         lat: 13.28799, lon: -86.65439,
         texto: "info/Madriz/San_José_de_Cusmapa.txt",
-        imagenes: ["fotos/Madriz/SanJoseCusmapa/cusmapaMadriz1.jpg", "fotos/Madriz/SanJoseCusmapa/cusmapaMadriz2.jpg", "fotos/Madriz/SanJoseCusmapa/cusmapaMadriz3.jpg", "fotos/Madriz/SanJoseCusmapa/cusmapaMadriz4.jpg", "fotos/Madriz/SanJoseCusmapa/cusmapaMadriz5.jpg"],
+        imagenes: ["fotos/Madriz/SanJoseCusmapa/cusmapaMadriz1.jpg", "fotos/Madriz/SanJoseCusmapa/cusmapaMadriz2.jpg", "fotos/Madriz/SanJoseCusmapa/cusmapaMadriz3.jpg", "fotos/Madriz/SanJoseCusmapa/cusmapaMadriz4.jpg"],
       },
       {
         nombre: "Sitio Arqueológico de San Lucas",
         lat: 13.39700, lon: -86.65500,
         texto: "info/Madriz/Sitio_Arqueológico_de_San_Lucas.txt",
-        imagenes: ["fotos/Madriz/SitioArqueologico/arqueologicoMadriz1.jpg", "fotos/Madriz/SitioArqueologico/arqueologicoMadriz2.jpg", "fotos/Madriz/SitioArqueologico/arqueologicoMadriz3.jpg", "fotos/Madriz/SitioArqueologico/arqueologicoMadriz4.jpg", "fotos/Madriz/SitioArqueologico/arqueologicoMadriz5.jpg"],
+        imagenes: ["fotos/Madriz/SitioArqueologico/arqueologicoMadriz1.jpg", "fotos/Madriz/SitioArqueologico/arqueologicoMadriz2.jpg", "fotos/Madriz/SitioArqueologico/arqueologicoMadriz3.jpg", "fotos/Madriz/SitioArqueologico/arqueologicoMadriz4.jpg"],
       },
       {
         nombre: "Pueblo Tradicional de Yalagüina",
@@ -219,7 +219,7 @@ const DEPARTAMENTOS = {
         nombre: "Parroquia de la Purísima Concepción de Totogalpa",
         lat: 13.56306, lon: -86.49341,
         texto: "info/Madriz/Parroquia_de_la_Purísima_Concepción_de_Totogalpa.txt",
-        imagenes: ["fotos/Madriz/ParroquiaPurisima/purisimaMadriz1.jpg", "fotos/Madriz/ParroquiaPurisima/purisimaMadriz2.jpg", "fotos/Madriz/ParroquiaPurisima/purisimaMadriz3.jpg", "fotos/Madriz/ParroquiaPurisima/purisimaMadriz4.jpg", "fotos/Madriz/ParroquiaPurisima/purisimaMadriz5.jpg"],
+        imagenes: ["fotos/Madriz/ParroquiaPurisima/purisimaMadriz1.jpg", "fotos/Madriz/ParroquiaPurisima/purisimaMadriz2.jpg", "fotos/Madriz/ParroquiaPurisima/purisimaMadriz3.jpg", "fotos/Madriz/ParroquiaPurisima/purisimaMadriz4.jpg"],
       },
       {
         nombre: "",
@@ -291,9 +291,9 @@ const DEPARTAMENTOS = {
       },
       {
         nombre: "Monumento La Bomba",
-        lat: 11.97934, lon: -86.09753,
+        lat: 13.08546, lon: -86.34685,
         texto: "info/Esteli/LaBomba.txt",
-        imagenes: ["fotos/Esteli/LaBomba/Labomba1.jpg", "fotos/Esteli/LaBomba/Labomba2.jpg", "fotos/Esteli/LaBomba/Labomba3.jpg", "fotos/Esteli/LaBomba/Labomba4.jpg","fotos/Esteli/LaBomba/Labomba5.jpg"],
+        imagenes: ["fotos/Esteli/LaBomba/Labomba1.jpg", "fotos/Esteli/LaBomba/Labomba2.jpg", "fotos/Esteli/LaBomba/Labomba3.jpg", "fotos/Esteli/LaBomba/Labomba4.jpg"],
       },
       {
         nombre: "Sitio Arqueológico Las Pintadas",
@@ -385,13 +385,13 @@ const DEPARTAMENTOS = {
         nombre: "Ciudad de Matagalpa",
         lat: 12.9284, lon: -85.9184,
         texto: "info/Matagalpa/Ciudad_de_Matagalpa.txt",
-        imagenes: ["fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa.jpg", "fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa2.jpg", "fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa3.jpg","fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa4.jpg","fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa5.jpg"],
+        imagenes: ["fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa.jpg", "fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa2.jpg", "fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa3.jpg","fotos/Matagalpa/CiudadMatagalpa/ciudadMatagalpa4.jpg"],
       },
       {
         nombre: "Catedral San Pedro Apóstol",
         lat: 12.9280, lon: -85.9180,
         texto: "info/Matagalpa/Catedral_San_Pedro_Apóstol.txt",
-        imagenes: ["fotos/Matagalpa/CatedralSanPedro/catedralMatagalpa1.jpg", "fotos/Matagalpa/CatedralSanPedro/catedralMatagalpa2.jpg", "fotos/Matagalpa/CatedralSanPedro/catedralMatagalpa3.jpg", "fotos/Matagalpa/CatedralSanPedro/catedralMatagalpa4.jpg", "fotos/Matagalpa/CatedralSanPedro/catedralMatagalpa5.jpg"],
+        imagenes: ["fotos/Matagalpa/CatedralSanPedro/catedralMatagalpa1.jpg", "fotos/Matagalpa/CatedralSanPedro/catedralMatagalpa2.jpg", "fotos/Matagalpa/CatedralSanPedro/catedralMatagalpa3.jpg", "fotos/Matagalpa/CatedralSanPedro/catedralMatagalpa4.jpg"],
       },
       {
         nombre: "Museo Nacional del Café",
@@ -532,7 +532,7 @@ const DEPARTAMENTOS = {
         nombre: "Parque Central Boaco",
         lat: 12.4728, lon: -85.6593,
         texto: "info/Boaco/parque_central_Boaco.txt",
-        imagenes: ["fotos/Boaco/parqueboaco1.jpg","fotos/Boaco/parqueboaco2.jpg","fotos/Boaco/parqueboaco3.jpg","fotos/Boaco/parqueboaco4.jpg","fotos/Boaco/parqueboaco5.jpg"],
+        imagenes: ["fotos/Boaco/parqueboaco1.jpg","fotos/Boaco/parqueboaco2.jpg","fotos/Boaco/parqueboaco3.jpg","fotos/Boaco/parqueboaco4.jpg"],
       },
       {
         nombre: "Parroquia Santiago Apóstol de Boaco",
