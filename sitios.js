@@ -559,12 +559,6 @@ const DEPARTAMENTOS = {
         imagenes: ["fotos/Boaco/Camoapa1.jpg", "fotos/Boaco/Camoapa2.jpg", "fotos/Boaco/Camoapa3.jpg", "fotos/Boaco/Camoapa4.jpg", "fotos/Boaco/Camoapa5.jpg"],
       },
       {
-        nombre: "El Caracol",
-        lat: 12.3514, lon: -85.8899,
-        texto: "info/Boaco/El Caracol.txt",
-        imagenes: ["fotos/Boaco/ElCaracol1.jpg", "fotos/Boaco/ElCaracol2.jpg", "fotos/Boaco/ElCaracol3.jpg", "fotos/Boaco/ElCaracol4.jpg", "fotos/Boaco/ElCaracol5.jpg"],
-      },
-      {
         nombre: "Monumento al Cacique Yarrince",
         lat: 12.4726, lon: -85.6600,
         texto: "info/Boaco/monumento al cacique yarrince.txt",
