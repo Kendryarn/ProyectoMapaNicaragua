@@ -511,7 +511,7 @@ const DEPARTAMENTOS = {
       },
       {
         nombre: "Comunidad Garífuna de Orinoco",
-        lat: 13.4000, lon: -83.5643,
+        lat: 12.5500, lon: -83.7167,
         texto: "info/RAAS/Orinoco.txt",
         imagenes: ["fotos/RACCS/Orinoco/Orinoco1.jpg", "fotos/RACCS/Orinoco/Orinoco2.jpg", "fotos/RACCS/Orinoco/Orinoco3.jpg", "fotos/RACCS/Orinoco/Orinoco4.jpg", "fotos/RACCS/Orinoco/Orinoco5.jpg"],
       },
