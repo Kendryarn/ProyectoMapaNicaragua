@@ -235,6 +235,7 @@ const DEPARTAMENTOS = {
   NS: {
     nombre: "Nueva Segovia",
     color: "#6a4c93",
+    texto: "info/Nueva_Segovia/NuevaSegovia.txt",
     sitios: [
       {
         nombre: "Iglesia Santuario del Señor de los Milagros",
@@ -384,6 +385,7 @@ const DEPARTAMENTOS = {
   MT: {
     nombre: "Matagalpa",
     color: "#b5651d",
+    texto: "info/Matagalpa/Matagalpa.txt",
     sitios: [
       {
         nombre: "Ciudad de Matagalpa",
@@ -433,6 +435,7 @@ const DEPARTAMENTOS = {
   AN: {
     nombre: "Costa Caribe Norte (RACCN)",
     color: "#d9a066",
+    texto: "info/RAAN/RAAN.txt",
     sitios: [
       {
         nombre: "Puerto Cabezas (Bilwi) - Muelle Histórico y Casco Urbano",
@@ -482,6 +485,7 @@ const DEPARTAMENTOS = {
   AS: {
     nombre: "Costa Caribe Sur (RACCS)",
     color: "#e07a5f",
+    texto: "info/RAAS/RAAS.txt",
     sitios: [
       {
         nombre: "Barrios Históricos de Bluefields (Old Bank y Cotton Tree)",
@@ -625,6 +629,7 @@ const DEPARTAMENTOS = {
   SJ: {
     nombre: "Río San Juan",
     color: "#6a994e",
+    texto: "info/Rio_San_Juan/RioSanJuan.txt",
     sitios: [
       {
         nombre: "Fortaleza de la Inmaculada Concepción (El Castillo)",
@@ -725,6 +730,7 @@ const DEPARTAMENTOS = {
   MS: {
     nombre: "Masaya",
     color: "#ff7b9c",
+    texto: "info/Masaya/Masaya.txt",
     sitios: [
       {
         nombre: "Parque Nacional Volcán Masaya",
@@ -824,6 +830,7 @@ const DEPARTAMENTOS = {
   RI: {
     nombre: "Rivas",
     color: "#9b5de5",
+    texto: "info/Rivas/Rivas",
     sitios: [
       {
         nombre: "Iglesia de San Pedro Apóstol de Rivas",
