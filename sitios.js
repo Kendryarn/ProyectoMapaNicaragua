@@ -135,7 +135,7 @@ const DEPARTAMENTOS = {
   CI: {
     nombre: "Chinandega",
     color: "#8ab833",
-    Texto: "info/Chinandega/Chinandega.txt",
+    texto: "info/Chinandega/Chinandega.txt",
     sitios: [
       {
         nombre: "Puerto de Corinto",
@@ -185,7 +185,7 @@ const DEPARTAMENTOS = {
   MD: {
     nombre: "Madriz",
     color: "#c4733b",
-    Texto: "info/Madriz/Madriz.txt",
+    texto: "info/Madriz/Madriz.txt",
     sitios: [
       {
         nombre: "Cañón de Somoto (Sitio Geológico y Arqueológico)",
@@ -284,7 +284,7 @@ const DEPARTAMENTOS = {
   ES: {
     nombre: "Estelí",
     color: "#ef476f",
-    Texto: "info/Esteli/Esteli.txt",
+    texto: "info/Esteli/Esteli.txt",
     sitios: [
       {
         nombre: "Sitio Arqueológico de Condega",
@@ -334,7 +334,7 @@ const DEPARTAMENTOS = {
   JI: {
     nombre: "Jinotega",
     color: "#2f9e44",
-    Texto: "info/Jinotega/Jinotega.txt",
+    texto: "info/Jinotega/Jinotega.txt",
     sitios: [
       {
         nombre: "Catedral de San Juan Bautista",
@@ -531,7 +531,7 @@ const DEPARTAMENTOS = {
   BO: {
     nombre: "Boaco",
     color: "#c77dff",
-    Texto: "info/Boaco/Boaco.txt",
+    texto: "info/Boaco/Boaco.txt",
     sitios: [
       {
         nombre: "Parque Central Boaco",
@@ -575,7 +575,7 @@ const DEPARTAMENTOS = {
   CO: {
     nombre: "Chontales",
     color: "#e9892b",
-    Texto: "info/Chontales/Chontales.txt",
+    texto: "info/Chontales/Chontales.txt",
     sitios: [
       {
         nombre: "Museo Gregorio Aguilar Barea",
@@ -675,7 +675,7 @@ const DEPARTAMENTOS = {
   GR: {
     nombre: "Granada",
     color: "#d4a017",
-    Texto: "info/Granada/Granada.txt",
+    texto: "info/Granada/Granada.txt",
     sitios: [
       {
         nombre: "Antigua Estación del Ferrocarril de Granada",
@@ -774,7 +774,7 @@ const DEPARTAMENTOS = {
   CA: {
     nombre: "Carazo",
     color: "#4f772d",
-    Texto: "info/Carazo/Carazo.txt",
+    texto: "info/Carazo/Carazo.txt",
     sitios: [
       {
         nombre: "Basílica Menor de San Sebastián (Diriamba)",
