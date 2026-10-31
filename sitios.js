@@ -830,7 +830,7 @@ const DEPARTAMENTOS = {
   RI: {
     nombre: "Rivas",
     color: "#9b5de5",
-    texto: "info/Rivas/Rivas",
+    texto: "info/Rivas/Rivas.txt",
     sitios: [
       {
         nombre: "Iglesia de San Pedro Apóstol de Rivas",
